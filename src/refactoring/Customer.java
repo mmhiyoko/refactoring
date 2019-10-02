@@ -27,7 +27,7 @@ public class Customer {
             double thisAmount = 0;
             Rental each = (Rental) rentals.nextElement();
 
-            thisAmount = amountFor(each);
+            thisAmount = each.getCharge();
 
             frequentRenterPoints ++;
             if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
@@ -40,9 +40,5 @@ public class Customer {
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
         result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
         return result;
-    }
-
-    private double amountFor(Rental aRental) {
-        return aRental.getCharge();
     }
 }
