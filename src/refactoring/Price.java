@@ -3,6 +3,12 @@ package refactoring;
 abstract class Price {
     abstract double getCharge(int daysRented);
     abstract int getPriceCode();
+    int getFrequentRenterPoints(int daysRented) {
+        if ((getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1)
+            return 2;
+        else
+            return 1;
+    }
 }
 class ChildrensPrice extends Price {
     double getCharge(int daysRented) {
@@ -25,6 +31,11 @@ class NewReleasePrice extends Price {
     int getPriceCode() {
         return Movie.NEW_RELEASE;
     }
+
+    @Override
+    int getFrequentRenterPoints(int daysRented) {
+        return (daysRented > 1) ? 2 : 1;
+    }
 }
 class RegularPrice extends Price {
     double getCharge(int daysRented) {
@@ -36,5 +47,10 @@ class RegularPrice extends Price {
 
     int getPriceCode() {
         return Movie.REGULAR;
+    }
+
+    @Override
+    int getFrequentRenterPoints(int daysRented) {
+        return 1;
     }
 }
