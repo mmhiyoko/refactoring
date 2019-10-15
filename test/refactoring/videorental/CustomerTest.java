@@ -1,6 +1,7 @@
-package refactoring;
+package refactoring.videorental;
 
 import org.junit.jupiter.api.Test;
+import refactoring.videorental.Customer;
 
 import static org.junit.jupiter.api.Assertions.*;
 

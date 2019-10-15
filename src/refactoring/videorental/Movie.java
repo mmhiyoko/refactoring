@@ -1,4 +1,4 @@
-package refactoring;
+package refactoring.videorental;
 
 public class Movie {
     public static final int CHILDRENS = 2;
