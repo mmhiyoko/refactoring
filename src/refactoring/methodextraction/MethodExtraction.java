@@ -15,10 +15,7 @@ public class MethodExtraction {
         Enumeration<Order> e = _orders;
         double outstanding = 0.0;
 
-        // バナーの印刷
-        System.out.println("*******************");
-        System.out.println("** Customer Owns **");
-        System.out.println("*******************");
+        printBanner();
 
         // 未払い料金の計算
         while (e.hasMoreElements()) {
@@ -29,5 +26,12 @@ public class MethodExtraction {
         // 明細の印刷
         System.out.println("name:" + _name);
         System.out.println("amount:" + outstanding);
+    }
+
+    void printBanner() {
+        System.out.println("*******************");
+        System.out.println("** Customer Owns **");
+        System.out.println("*******************");
+
     }
 }
