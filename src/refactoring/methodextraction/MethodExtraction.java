@@ -12,18 +12,21 @@ public class MethodExtraction {
     }
 
     void printOwing() {
+        printBanner();
+        double outstanding = getOutstanding();
+        printDetails(outstanding);
+    }
+
+    double getOutstanding() {
         Enumeration<Order> e = _orders;
         double outstanding = 0.0;
 
-        printBanner();
-
-        // 未払い料金の計算
         while (e.hasMoreElements()) {
             Order each = e.nextElement();
             outstanding += each.getAmount();
         }
 
-        printDetails(outstanding);
+        return outstanding;
     }
 
     void printBanner() {
