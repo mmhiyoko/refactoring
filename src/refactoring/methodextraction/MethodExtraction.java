@@ -23,9 +23,7 @@ public class MethodExtraction {
             outstanding += each.getAmount();
         }
 
-        // 明細の印刷
-        System.out.println("name:" + _name);
-        System.out.println("amount:" + outstanding);
+        printDetails(outstanding);
     }
 
     void printBanner() {
@@ -33,5 +31,10 @@ public class MethodExtraction {
         System.out.println("** Customer Owns **");
         System.out.println("*******************");
 
+    }
+
+    void printDetails(double outstanding) {
+        System.out.println("name:" + _name);
+        System.out.println("amount:" + outstanding);
     }
 }
