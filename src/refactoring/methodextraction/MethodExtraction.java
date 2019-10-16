@@ -19,14 +19,14 @@ public class MethodExtraction {
 
     double getOutstanding() {
         Enumeration<Order> e = _orders;
-        double outstanding = 0.0;
+        double result = 0.0;
 
         while (e.hasMoreElements()) {
             Order each = e.nextElement();
-            outstanding += each.getAmount();
+            result += each.getAmount();
         }
 
-        return outstanding;
+        return result;
     }
 
     void printBanner() {
