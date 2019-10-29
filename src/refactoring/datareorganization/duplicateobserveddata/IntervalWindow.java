@@ -27,6 +27,7 @@ public class IntervalWindow extends java.awt.Frame implements Observer {
          calculateLength();
       }
       void EndField_FocusLost(java.awt.event.FocusEvent event) {
+         setEnd(_endField.getText());
          if (isNotInteger(getEnd())) {
              setEnd("0");
          }
@@ -67,15 +68,15 @@ public class IntervalWindow extends java.awt.Frame implements Observer {
    }
 
    public void update(Observable observed, Object arg) {
-
+       _endField.setText(_subject.getEnd());
    }
 
    String getEnd() {
-      return _endField.getText();
+       return _subject.getEnd();
    }
 
    void setEnd(String arg) {
-      _endField.setText(arg);
+      _subject.setEnd(arg);
    }
 
    public IntervalWindow() {
