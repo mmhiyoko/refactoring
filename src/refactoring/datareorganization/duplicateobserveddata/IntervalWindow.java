@@ -27,14 +27,14 @@ public class IntervalWindow extends java.awt.Frame implements Observer {
          calculateLength();
       }
       void EndField_FocusLost(java.awt.event.FocusEvent event) {
-         if (isNotInteger(_endField.getText())) {
-            _startField.setText("0");
+         if (isNotInteger(getEnd())) {
+             setEnd("0");
          }
          calculateLength();
       }
       void LengthField_FocusLost(java.awt.event.FocusEvent event) {
          if (isNotInteger(_lengthField.getText())) {
-            _startField.setText("0");
+            _lengthField.setText("0");
          }
          calculateEnd();
       }
@@ -46,7 +46,7 @@ public class IntervalWindow extends java.awt.Frame implements Observer {
       void calculateLength() {
          try {
             int start = Integer.parseInt(_startField.getText());
-            int end = Integer.parseInt(_endField.getText());
+            int end = Integer.parseInt(getEnd());
             int length = end - start;
             _lengthField.setText(String.valueOf(length));
          } catch (NumberFormatException e) {
@@ -59,7 +59,7 @@ public class IntervalWindow extends java.awt.Frame implements Observer {
             int start = Integer.parseInt(_startField.getText());
             int length = Integer.parseInt(_lengthField.getText());
             int end = start + length;
-            _endField.setText(String.valueOf(end));
+            setEnd(String.valueOf(end));
          } catch (NumberFormatException e) {
             throw new RuntimeException("Un expected number format");
          }
@@ -68,6 +68,14 @@ public class IntervalWindow extends java.awt.Frame implements Observer {
 
    public void update(Observable observed, Object arg) {
 
+   }
+
+   String getEnd() {
+      return _endField.getText();
+   }
+
+   void setEnd(String arg) {
+      _endField.setText(arg);
    }
 
    public IntervalWindow() {
