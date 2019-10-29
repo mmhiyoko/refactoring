@@ -1,6 +1,9 @@
 package refactoring.datareorganization.duplicateobserveddata;
 
-public class IntervalWindow extends java.awt.Frame {
+import java.util.Observable;
+import java.util.Observer;
+
+public class IntervalWindow extends java.awt.Frame implements Observer {
    java.awt.TextField _startField;
    java.awt.TextField _endField;
    java.awt.TextField _lengthField;
@@ -62,4 +65,18 @@ public class IntervalWindow extends java.awt.Frame {
          }
       }
    }
+
+   public void update(Observable observed, Object arg) {
+
+   }
+
+   public IntervalWindow() {
+      super();
+
+      _subject = new Interval();
+      _subject.addObserver(this);
+      update(_subject, null);
+   }
+
+   private Interval _subject;
 }
