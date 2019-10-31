@@ -12,20 +12,21 @@ public class MethodExtraction {
     }
 
     void printOwing() {
-        Enumeration<Order> e = _orders;
-        double outstanding = 0.0;
-
         printBanner();
+        double outstanding = getOutstanding();
+        printDetails(outstanding);
+    }
 
-        // 未払い料金の計算
+    double getOutstanding() {
+        Enumeration<Order> e = _orders;
+        double result = 0.0;
+
         while (e.hasMoreElements()) {
             Order each = e.nextElement();
-            outstanding += each.getAmount();
+            result += each.getAmount();
         }
 
-        // 明細の印刷
-        System.out.println("name:" + _name);
-        System.out.println("amount:" + outstanding);
+        return result;
     }
 
     void printBanner() {
@@ -33,5 +34,10 @@ public class MethodExtraction {
         System.out.println("** Customer Owns **");
         System.out.println("*******************");
 
+    }
+
+    void printDetails(double outstanding) {
+        System.out.println("name:" + _name);
+        System.out.println("amount:" + outstanding);
     }
 }
